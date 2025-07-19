@@ -3,6 +3,12 @@ body {
   margin: 20px;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /*<!-- Точка на карте -->*/
 .custom-marker {
   width: auto;
@@ -71,8 +77,8 @@ body {
 
 .camera-hint-button {
   position: absolute;
-  bottom: calc(20px + env(safe-area-inset-bottom));
   left: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
   display: flex;
   align-items: center;
   border: 2px solid yellow;
@@ -82,6 +88,7 @@ body {
   cursor: pointer;
   z-index: 2;
 }
+
 
 .hint-thumb {
   width: 40px;
