@@ -94,7 +94,8 @@ function showMap() {
       }); 
 
     } 
-); 
+  )
+  } 
 
 
 
