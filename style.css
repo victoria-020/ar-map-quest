@@ -51,7 +51,6 @@ html, body {
   color: white;
   z-index: 1000;
   overflow: hidden;
-  position: fixed;
 }
 
 .camera-preview {
