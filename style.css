@@ -2,3 +2,32 @@ body {
   font-family: sans-serif;
   margin: 20px;
 }
+
+/* точка на карте*/
+.custom-marker {
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -100%); /* чтобы появлялось чуть выше маркера */
+}
+
+.popup-box {
+  background-color: black;
+  color: yellow;
+  padding: 4px;
+  border-radius: 6px;
+  text-align: center;
+  font-family: sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  max-width: 150px;
+}
+
+.popup-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.popup-image {
+  width: 100%;
+  border-radius: 4px;
+}

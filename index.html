@@ -17,19 +17,21 @@
   <!-- ✅ Твой JS-файл (script.js) -->
   <script defer src="script.js"></script>
 </head>
-  <meta charset="UTF-8">
-  <title>AR Quest</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
+
 <body>
   <h1>AR Quest</h1>
+
+  <!-- ✅ Кнопки управления -->
   <button onclick="showMap()">Показать карту</button>
   <button onclick="showAchievements()">Показать ачивки</button>
 
+  <!-- ✅ Контейнер карты (по умолчанию скрыт) -->
   <div id="map" style="width: 100%; height: 400px; display: none;"></div>
+
+  <!-- ✅ Контейнер для ачивок -->
   <div id="achievements"></div>
+
+  <!-- ✅ Контейнер для изображения задания (добавляется через JS) -->
+  <div id="quest-area"></div>
 </body>
 </html>
-
