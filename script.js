@@ -105,6 +105,8 @@ function startQuest(quest) {
   const preview = document.getElementById("cameraPreview");
   preview.src = quest.preview;
   camera.style.display = "flex";
+  document.getElementById("cameraHintThumb").src = quest.preview;
+
 
   // Через 5 сек закрываем "камеру" и показываем фото-задание
   setTimeout(() => {
