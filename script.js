@@ -29,8 +29,13 @@ function showMap() {
 
       const userLocation = [position.coords.longitude, position.coords.latitude];
 
-      mapboxgl.accessToken = '...';
-      const map = new mapboxgl.Map({ ... });
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
+       const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: userLocation,
+        zoom: 14
+       });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
@@ -60,8 +65,13 @@ function showMap() {
 
       const fallbackLocation = [56.233073, 58.010752];
 
-      mapboxgl.accessToken = '...';
-      const map = new mapboxgl.Map({ ... });
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: fallbackLocation,
+        zoom: 14
+      });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
