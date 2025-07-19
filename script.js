@@ -28,7 +28,7 @@ function showMap() {
     (position) => {
       const userLocation = [position.coords.longitude, position.coords.latitude];
 
-      mapboxgl.accessToken = '...';
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -65,7 +65,7 @@ function showMap() {
 
       const fallbackLocation = [56.233073, 58.010752];
 
-      mapboxgl.accessToken = '...';
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -84,18 +84,17 @@ function showMap() {
           </div>
        `;
 
-  const marker = new mapboxgl.Marker(el)
-    .setLngLat(quest.location)
-    .addTo(map);
+        const marker = new mapboxgl.Marker(el)
+         .setLngLat(quest.location)
+         .addTo(map);
 
-  el.addEventListener('click', () => {
-    startQuest(quest);
-  });
-});
+       el.addEventListener('click', () => {
+         startQuest(quest);
+       });
+      }); 
 
-    }
-  );
-}
+    } 
+); 
 
 
 
