@@ -101,7 +101,7 @@ let currentQuest = null;
 function startQuest(quest) {
   currentQuest = quest; // сохраняем текущий квест для показа в подсказке
   // Показываем эмуляцию камеры
-  const camera = document.getElementById("cameraScreen");
+  const camera = document.querySelector(".camera-screen");
   const preview = document.getElementById("cameraPreview");
   preview.src = quest.preview;
   camera.style.display = "flex";
