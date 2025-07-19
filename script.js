@@ -28,10 +28,15 @@ function showMap() {
     (position) => {
       // === Успешная геолокация ===
 
-      const userLocation = [56.234465, 58.010399]; // временная фиксация центра
+      const userLocation = [56.234465, 58.010399]; // временно фиксированная точка
 
-      mapboxgl.accessToken = '...';
-      const map = new mapboxgl.Map({ ... });
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: userLocation,
+        zoom: 14
+      });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
@@ -50,8 +55,8 @@ function showMap() {
 
         el.addEventListener('click', () => {
           startQuest(quest);
-        }); 
-      }); 
+        });
+      });
     },
 
     (error) => {
@@ -61,8 +66,13 @@ function showMap() {
 
       const fallbackLocation = [56.234465, 58.010399];
 
-      mapboxgl.accessToken = '...';
-      const map = new mapboxgl.Map({ ... });
+      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: fallbackLocation,
+        zoom: 14
+      });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
@@ -81,11 +91,12 @@ function showMap() {
 
         el.addEventListener('click', () => {
           startQuest(quest);
-        }); 
-      }); 
-    } 
-  ); 
-} 
+        });
+      });
+    }
+  );
+}
+
 
 
 
