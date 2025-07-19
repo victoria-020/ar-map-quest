@@ -2,7 +2,7 @@ function showMap() {
   const mapDiv = document.getElementById('map');
   mapDiv.style.display = 'block';
 
-  mapboxgl.accessToken = 'ВСТАВЬ_СЮДА_СВОЙ_MAPBOX_ТОКЕН';
+  mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
   const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
