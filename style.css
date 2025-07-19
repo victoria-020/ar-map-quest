@@ -3,7 +3,7 @@ body {
   margin: 20px;
 }
 
-/* точка на карте*/
+/*<!-- Точка на карте -->*/
 .custom-marker {
   width: auto;
   height: auto;
@@ -32,3 +32,5 @@ body {
   border-radius: 4px;
   display: block;
 }
+
+

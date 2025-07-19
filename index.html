@@ -5,33 +5,49 @@
   <title>AR Quest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Стили для карты (Mapbox) -->
+  <!-- Стили для карты (Mapbox) -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
 
-  <!-- ✅ Твои стили (файл style.css) -->
+  <!-- Стили (файл style.css) -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- ✅ Скрипт Mapbox -->
+  <!-- Скрипт Mapbox -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
-  <!-- ✅ Твой JS-файл (script.js) -->
+  <!-- JS-файл (script.js) -->
   <script defer src="script.js"></script>
 </head>
 
 <body>
   <h1>AR Quest</h1>
 
-  <!-- ✅ Кнопки управления -->
+  <!-- Кнопки управления -->
   <button onclick="showMap()">Показать карту</button>
   <button onclick="showAchievements()">Показать ачивки</button>
 
-  <!-- ✅ Контейнер карты (по умолчанию скрыт) -->
+  <!-- Контейнер карты (по умолчанию скрыт) -->
   <div id="map" style="width: 100%; height: 400px; display: none;"></div>
 
-  <!-- ✅ Контейнер для ачивок -->
+  <!-- Контейнер для ачивок -->
   <div id="achievements"></div>
 
-  <!-- ✅ Контейнер для изображения задания (добавляется через JS) -->
+  <!-- Контейнер для изображения задания (добавляется через JS) -->
   <div id="quest-area"></div>
+
+  <!-- 🟦 Эмуляция камеры -->
+  <div id="cameraScreen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; color:white; z-index:1000; text-align:center; padding-top:50px;">
+    <p style="font-size: 18px;">Наведите камеру на строение с задания</p>
+    <img id="cameraPreview" src="" style="width: 80%; max-height: 50vh; margin: 20px auto;" />
+    <button onclick="showHint()" style="padding: 10px 15px; font-size: 16px;">Что мне искать?</button>
+  </div>
+
+  <!-- Попап-подсказка -->
+  <div id="hintPopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); color:white; z-index:1100; text-align:center; padding-top:40px;">
+   <h2 style="margin-bottom: 20px;">Что мне искать?</h2>
+   <img id="hintImage" src="" style="width: 80%; max-height: 50vh; margin-bottom: 20px;" />
+   <br />
+   <button onclick="closeHint()" style="padding: 10px 15px; font-size: 16px;">Понял, ищу дальше</button>
+  </div>
+  
 </body>
 </html>

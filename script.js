@@ -96,10 +96,40 @@ function showMap() {
   );
 }
 
-// 3. Функция запуска квеста
+// 3. Квест: камера, задание
+let currentQuest = null;
 function startQuest(quest) {
-  alert("Сканируем здание через камеру (эмуляция)");
+  currentQuest = quest; // сохраняем текущий квест для показа в подсказке
+  // Показываем эмуляцию камеры
+  const camera = document.getElementById("cameraScreen");
+  const preview = document.getElementById("cameraPreview");
+  preview.src = quest.preview;
+  camera.style.display = "flex";
 
+  // Через 5 сек закрываем "камеру" и показываем фото-задание
+  setTimeout(() => {
+    camera.style.display = "none";
+    showQuestPhoto(quest);
+  }, 5000);
+}
+
+// Что мне искать?
+function showHint() {
+  const popup = document.getElementById("hintPopup");
+  const hintImage = document.getElementById("hintImage");
+  hintImage.src = currentQuest?.preview || ""; // чтобы показать фото квеста
+  popup.style.display = "block";
+}
+
+function closeHint() {
+  document.getElementById("hintPopup").style.display = "none";
+}
+
+
+
+// 4. Показ фото с текстом-заданием
+function showQuestPhoto(quest) {
+  // Показываем картинку и задание
   const img = document.createElement("img");
   img.src = quest.preview;
   img.id = "questImage";
@@ -109,9 +139,20 @@ function startQuest(quest) {
   const old = document.getElementById("questImage");
   if (old) old.remove();
   document.body.appendChild(img);
+
+  // Показываем текст-задание
+  const instruction = document.createElement("p");
+  instruction.innerText = "Это фото фонтана у Дома Советов, 1981г.\nНайди на фото предмет, которого в то время не существовало, и нажми на него.";
+  instruction.style = "font-size: 18px; margin-top: 10px;";
+
+  const oldText = document.getElementById("questInstruction");
+  if (oldText) oldText.remove();
+  instruction.id = "questInstruction";
+  document.body.appendChild(instruction);
 }
 
-// 4. Функция проверки ответа
+
+// 5. Функция проверки ответа
 function checkAnswer(event, quest) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -125,7 +166,7 @@ function checkAnswer(event, quest) {
   }
 }
 
-// 5. Функция показа всех ачивок
+// 6. Функция показа всех ачивок
 function showAchievements() {
   let result = "<h3>Твои ачивки:</h3>";
   quests.forEach(q => {
