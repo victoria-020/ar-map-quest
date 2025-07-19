@@ -26,76 +26,67 @@ function showMap() {
 
   navigator.geolocation.getCurrentPosition(
     (position) => {
+      // === Успешная геолокация ===
+
       const userLocation = [position.coords.longitude, position.coords.latitude];
 
-      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: userLocation,
-        zoom: 14
-      });
+      mapboxgl.accessToken = '...';
+      const map = new mapboxgl.Map({ ... });
 
       quests.forEach(quest => {
-        // Создаём HTML-блок с названием и фото
-          const el = document.createElement('div');
-         el.className = 'custom-marker';
+        const el = document.createElement('div');
+        el.className = 'custom-marker';
 
-          el.innerHTML = `
-            <div class="popup-box">
+        el.innerHTML = `
+          <div class="popup-box">
             <div class="popup-title">${quest.title}</div>
-           <img src="${quest.preview}" class="popup-image">
+            <img src="${quest.preview}" class="popup-image">
           </div>
-         `;
+        `;
 
-       // Добавляем на карту как маркер
         const marker = new mapboxgl.Marker(el)
-         .setLngLat(quest.location)
+          .setLngLat(quest.location)
           .addTo(map);
 
-       // (опционально) клик по кастомному маркеру
-         el.addEventListener('click', () => {
-         startQuest(quest);
-         });
-      });
-
+        el.addEventListener('click', () => {
+          startQuest(quest);
+        }); 
+      }); 
     },
+
     (error) => {
+      // === Fallback, если нет геолокации ===
+
       alert("Не удалось получить местоположение. Используем стандартную точку.");
 
       const fallbackLocation = [56.233073, 58.010752];
 
-      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: fallbackLocation,
-        zoom: 14
-      });
+      mapboxgl.accessToken = '...';
+      const map = new mapboxgl.Map({ ... });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
-       el.className = 'custom-marker';
+        el.className = 'custom-marker';
 
-       el.innerHTML = `
-         <div class="popup-box">
-           <div class="popup-title">${quest.title}</div>
-           <img src="${quest.preview}" class="popup-image">
+        el.innerHTML = `
+          <div class="popup-box">
+            <div class="popup-title">${quest.title}</div>
+            <img src="${quest.preview}" class="popup-image">
           </div>
-       `;
+        `;
 
         const marker = new mapboxgl.Marker(el)
-         .setLngLat(quest.location)
-         .addTo(map);
+          .setLngLat(quest.location)
+          .addTo(map);
 
-       el.addEventListener('click', () => {
-         startQuest(quest);
-       });
+        el.addEventListener('click', () => {
+          startQuest(quest);
+        }); 
       }); 
-
     } 
-  )
-  } 
+  ); 
+} 
+
 
 
 
