@@ -28,7 +28,7 @@ function showMap() {
     (position) => {
       // === Успешная геолокация ===
 
-      const userLocation = [position.coords.longitude, position.coords.latitude];
+      const userLocation = [56.234465, 58.010399]; // временная фиксация центра
 
       mapboxgl.accessToken = '...';
       const map = new mapboxgl.Map({ ... });
@@ -59,7 +59,7 @@ function showMap() {
 
       alert("Не удалось получить местоположение. Используем стандартную точку.");
 
-      const fallbackLocation = [56.233073, 58.010752];
+      const fallbackLocation = [56.234465, 58.010399];
 
       mapboxgl.accessToken = '...';
       const map = new mapboxgl.Map({ ... });
