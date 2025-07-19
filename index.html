@@ -34,16 +34,18 @@
   <!-- Контейнер для изображения задания (добавляется через JS) -->
   <div id="quest-area"></div>
 
-  <!-- 🟦 Эмуляция камеры -->
-  <div id="cameraScreen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; color:white; z-index:1000; text-align:center; padding-top:50px;">
-    <p style="font-size: 18px;">Наведите камеру на строение с задания</p>
-    <img id="cameraPreview" src="" style="width: 80%; max-height: 50vh; margin: 20px auto;" />
-    <div style="position: absolute; bottom: 30px; left: 20px; display: flex; align-items: center; border: 2px solid yellow; border-radius: 8px; padding: 5px 10px; background: rgba(0,0,0,0.6); cursor: pointer;" onclick="showHint()">
-      <img id="cameraHintThumb" src="" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px; border-radius: 4px;" />
-     <span style="color: white; font-size: 14px;">ЧТО МНЕ ИСКАТЬ?</span>
-</div>
-
+  <!-- Эмуляция камеры -->
+  <div id="cameraScreen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; color:white; z-index:1000; text-align:center; padding-top:50px; flex-direction: column; justify-content: center; align-items: center;">
+  <p style="font-size: 18px;">Наведите камеру на строение с задания</p>
+  <img id="cameraPreview" src="" style="width: 80%; max-height: 50vh; margin: 20px auto;" />
+  
+  <!-- Кнопка "Что мне искать?" с превью -->
+  <div onclick="showHint()" style="position: absolute; bottom: 30px; left: 20px; display: flex; align-items: center; border: 2px solid yellow; border-radius: 8px; padding: 5px 10px; background: rgba(0,0,0,0.6); cursor: pointer;">
+    <img id="cameraHintThumb" src="" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px; border-radius: 4px;" />
+    <span style="color: white; font-size: 14px;">ЧТО МНЕ ИСКАТЬ?</span>
   </div>
+  </div>
+
 
   <!-- Попап-подсказка -->
   <div id="hintPopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); color:white; z-index:1100; text-align:center; padding-top:40px;">
