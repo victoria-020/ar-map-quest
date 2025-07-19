@@ -74,17 +74,25 @@ function showMap() {
       });
 
       quests.forEach(quest => {
-        const marker = new mapboxgl.Marker()
-          .setLngLat(quest.location)
-          .setPopup(new mapboxgl.Popup().setText(quest.title))
-          .addTo(map);
+        const el = document.createElement('div');
+       el.className = 'custom-marker';
 
-        marker.getPopup().addTo(map);
+       el.innerHTML = `
+         <div class="popup-box">
+           <div class="popup-title">${quest.title}</div>
+           <img src="${quest.preview}" class="popup-image">
+          </div>
+       `;
 
-        marker.getElement().addEventListener('click', () => {
-          startQuest(quest);
-        });
-      });
+  const marker = new mapboxgl.Marker(el)
+    .setLngLat(quest.location)
+    .addTo(map);
+
+  el.addEventListener('click', () => {
+    startQuest(quest);
+  });
+});
+
     }
   );
 }
