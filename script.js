@@ -1,4 +1,3 @@
-
 // 1. Данные всех квестов
 const quests = [
   {
@@ -28,26 +27,21 @@ function showMap() {
     (position) => {
       // === Успешная геолокация ===
 
-      const userLocation = [56.234465, 58.010399]; // временно фиксированная точка
+      const userLocation = [position.coords.longitude, position.coords.latitude];
 
-      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: userLocation,
-        zoom: 14
-      });
+      mapboxgl.accessToken = '...';
+      const map = new mapboxgl.Map({ ... });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
         el.className = 'custom-marker';
 
-        el.innerHTML = `
+        el.innerHTML = 
           <div class="popup-box">
             <div class="popup-title">${quest.title}</div>
             <img src="${quest.preview}" class="popup-image">
           </div>
-        `;
+        ;
 
         const marker = new mapboxgl.Marker(el)
           .setLngLat(quest.location)
@@ -55,8 +49,8 @@ function showMap() {
 
         el.addEventListener('click', () => {
           startQuest(quest);
-        });
-      });
+        }); 
+      }); 
     },
 
     (error) => {
@@ -64,26 +58,21 @@ function showMap() {
 
       alert("Не удалось получить местоположение. Используем стандартную точку.");
 
-      const fallbackLocation = [56.234465, 58.010399];
+      const fallbackLocation = [56.233073, 58.010752];
 
-      mapboxgl.accessToken = 'pk.eyJ1IjoidmljdG9yaWEtOSIsImEiOiJjbWRhNXltZGIwY3IxMm1zZ2dhZ3F2eWl3In0.MW4pUoKhf-8f-sEar6WaTA';
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: fallbackLocation,
-        zoom: 14
-      });
+      mapboxgl.accessToken = '...';
+      const map = new mapboxgl.Map({ ... });
 
       quests.forEach(quest => {
         const el = document.createElement('div');
         el.className = 'custom-marker';
 
-        el.innerHTML = `
+        el.innerHTML = 
           <div class="popup-box">
             <div class="popup-title">${quest.title}</div>
             <img src="${quest.preview}" class="popup-image">
           </div>
-        `;
+        ;
 
         const marker = new mapboxgl.Marker(el)
           .setLngLat(quest.location)
@@ -91,12 +80,11 @@ function showMap() {
 
         el.addEventListener('click', () => {
           startQuest(quest);
-        });
-      });
-    }
-  );
-}
-
+        }); 
+      }); 
+    } 
+  ); 
+} 
 
 
 
@@ -135,7 +123,7 @@ function showAchievements() {
   let result = "<h3>Твои ачивки:</h3>";
   quests.forEach(q => {
     const unlocked = localStorage.getItem(q.id);
-    result += `<p>${q.title}: ${unlocked ? '✅' : '🔒'}</p>`;
+    result += <p>${q.title}: ${unlocked ? '✅' : '🔒'}</p>;
   });
   document.getElementById('achievements').innerHTML = result;
 }
