@@ -51,7 +51,7 @@ html, body {
   color: white;
   z-index: 1000;
   overflow: hidden;
-  position: relative;
+  position: fixed;
 }
 
 .camera-preview {
@@ -78,7 +78,7 @@ html, body {
 .camera-hint-button {
   position: absolute;
   left: 20px;
-  bottom: calc(20px + env(safe-area-inset-bottom));
+  bottom: max(20px, env(safe-area-inset-bottom));
   display: flex;
   align-items: center;
   border: 2px solid yellow;
