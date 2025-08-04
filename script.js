@@ -128,24 +128,50 @@ function closeHint() {
 }
 
 
-
-// 4. Показ фото с текстом-заданием
+//4.Показать фото квеста
 function showQuestPhoto(quest) {
-  // Показываем картинку и задание
+  // Удалить старый task-container, если был
+  const old = document.getElementById("task-container");
+  if (old) old.remove();
+
+  // Создать контейнер
+  const container = document.createElement("div");
+  container.id = "task-container";
+  container.style.position = "relative";
+  container.style.display = "inline-block";
+  container.style.width = "100%"; // чтобы картинка растягивалась
+
+  // Создать картинку
   const img = document.createElement("img");
   img.src = quest.preview;
   img.id = "questImage";
-  img.style = "width: 100%; margin-top: 10px;";
+  img.style.width = "100%";
   img.onclick = (event) => checkAnswer(event, quest);
 
-  const old = document.getElementById("questImage");
-  if (old) old.remove();
-  document.body.appendChild(img);
+  // Рамка — область клика
+  const highlight = document.createElement("div");
+  highlight.className = "highlight-area";
+  highlight.style.position = "absolute";
+  highlight.style.top = "0";
+  highlight.style.right = "0";
+  highlight.style.width = "20%";
+  highlight.style.height = "25%";
+  highlight.style.border = "2px solid yellow";
+  highlight.style.boxShadow = "0 0 6px yellow";
+  highlight.style.pointerEvents = "none"; // рамка не мешает клику
+
+  // Добавить всё в контейнер
+  container.appendChild(img);
+  container.appendChild(highlight);
+
+  // Добавить контейнер в body
+  document.body.appendChild(container);
 
   // Показываем текст-задание
   const instruction = document.createElement("p");
   instruction.innerText = "Это фото фонтана у Дома Советов, 1981г.\nНайди на фото предмет, которого в то время не существовало, и нажми на него.";
-  instruction.style = "font-size: 18px; margin-top: 10px;";
+  instruction.style.fontSize = "18px";
+  instruction.style.marginTop = "10px";
 
   const oldText = document.getElementById("questInstruction");
   if (oldText) oldText.remove();
@@ -154,13 +180,14 @@ function showQuestPhoto(quest) {
 }
 
 
+
 // 5. Функция проверки ответа
 function checkAnswer(event, quest) {
   const taskImg = document.getElementById('task-img');
   const rect = taskImg.getBoundingClientRect();
 
-  const clickX = e.clientX - rect.left;
-  const clickY = e.clientY - rect.top;
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
 
   // --- размеры зоны (в процентах от картинки) ---
   const widthPercent = 0.2;   // 20% ширины
