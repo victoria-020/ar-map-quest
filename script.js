@@ -156,17 +156,48 @@ function showQuestPhoto(quest) {
 
 // 5. Функция проверки ответа
 function checkAnswer(event, quest) {
-  const x = event.offsetX;
-  const y = event.offsetY;
-  const { x1, y1, x2, y2 } = quest.targetArea;
+  const taskImg = document.getElementById('task-img');
+  const rect = taskImg.getBoundingClientRect();
 
-  if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
-    alert(quest.achievementText);
-    localStorage.setItem(quest.id, 'true');
+  const clickX = e.clientX - rect.left;
+  const clickY = e.clientY - rect.top;
+
+  // --- размеры зоны (в процентах от картинки) ---
+  const widthPercent = 0.2;   // 20% ширины
+  const heightPercent = 0.25; // 25% высоты
+
+  // --- расчёт координат зоны ---
+  const zoneWidth = rect.width * widthPercent;
+  const zoneHeight = rect.height * heightPercent;
+
+  const x1 = rect.width - zoneWidth; // справа
+  const y1 = 0;
+  const x2 = rect.width;
+  const y2 = zoneHeight;
+
+  if (clickX >= x1 && clickX <= x2 && clickY >= y1 && clickY <= y2) {
+    alert('Правильно!');
   } else {
-    alert("Неверно, попробуй ещё раз!");
+    alert('Неверно, попробуй ещё раз!');
   }
 }
+
+
+
+
+
+//function checkAnswer(event, quest) {
+  //const x = event.offsetX;
+  //const y = event.offsetY;
+  //const { x1, y1, x2, y2 } = quest.targetArea;
+
+  //if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
+    //alert(quest.achievementText);
+    //localStorage.setItem(quest.id, 'true');
+  //} else {
+   // alert("Неверно, попробуй ещё раз!");
+ // }
+//}
 
 // 6. Функция показа всех ачивок
 function showAchievements() {

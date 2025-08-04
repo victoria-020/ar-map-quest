@@ -96,3 +96,21 @@ html, body {
   margin-right: 10px;
   border-radius: 4px;
 }
+
+
+
+/*Зона клика на фото*/
+#task-container {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 144px;
+  border: 2px solid yellow;
+  pointer-events: none; /* рамка не мешает клику */
+}
