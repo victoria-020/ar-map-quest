@@ -183,7 +183,7 @@ function showQuestPhoto(quest) {
 
 // 5. Функция проверки ответа
 function checkAnswer(event, quest) {
-  const taskImg = document.getElementById('task-img');
+  const taskImg = document.getElementById('questImage');
   const rect = taskImg.getBoundingClientRect();
 
   const clickX = event.clientX - rect.left;
