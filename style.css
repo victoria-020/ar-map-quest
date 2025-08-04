@@ -111,5 +111,6 @@ html, body {
   width: 100px;
   height: 144px;
   border: 2px solid yellow;
-  pointer-events: none; /* рамка не мешает клику */
+  box-shadow: 0 0 6px yellow;
+  pointer-events: none;
 }
