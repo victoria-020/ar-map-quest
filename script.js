@@ -189,39 +189,45 @@ function checkAnswer(event, quest) {
   const clickX = event.clientX - rect.left;
   const clickY = event.clientY - rect.top;
 
-  // --- размеры зоны (в процентах от картинки) ---
   const widthPercent = 0.2;   // 20% ширины
   const heightPercent = 0.25; // 25% высоты
 
-  // --- расчёт координат зоны ---
   const zoneWidth = rect.width * widthPercent;
   const zoneHeight = rect.height * heightPercent;
 
-  const x1 = rect.width - zoneWidth; // справа
+  const x1 = rect.width - zoneWidth;
   const y1 = 0;
   const x2 = rect.width;
   const y2 = zoneHeight;
 
   if (clickX >= x1 && clickX <= x2 && clickY >= y1 && clickY <= y2) {
-    alert('Правильно!');
+    const highlight = document.querySelector(".highlight-area");
+    if (highlight) {
+      highlight.style.borderColor = "limegreen";
+      highlight.style.boxShadow = "0 0 10px limegreen";
+    }
+
+    setTimeout(() => {
+      // Удалить старый текст, если есть
+      const oldResult = document.getElementById("foundText");
+      if (oldResult) oldResult.remove();
+
+      const resultText = document.createElement("p");
+      resultText.id = "foundText";
+      resultText.innerText = "ПРЕДМЕТ НАЙДЕН";
+      resultText.style.color = "limegreen";
+      resultText.style.fontSize = "24px";
+      resultText.style.fontWeight = "bold";
+      resultText.style.marginTop = "20px";
+      resultText.style.textAlign = "center";
+
+      document.body.appendChild(resultText);
+    }, 3000);
   } else {
-    alert('Неверно, попробуй ещё раз!');
+    alert("Неверно, попробуй ещё раз!");
   }
 }
 
-
-//function checkAnswer(event, quest) {
-  //const x = event.offsetX;
-  //const y = event.offsetY;
-  //const { x1, y1, x2, y2 } = quest.targetArea;
-
-  //if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
-    //alert(quest.achievementText);
-    //localStorage.setItem(quest.id, 'true');
-  //} else {
-   // alert("Неверно, попробуй ещё раз!");
- // }
-//}
 
 
 
